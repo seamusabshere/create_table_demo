@@ -1,0 +1,4 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  original: CREATE TABLE foo (id INTEGER PRIMARY KEY AUTO_INCREMENT)

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Parse results</h2>
+
+<h4>Original</h4>
+<pre><code id="original"><%= show_sql @statement.original %></code></pre>
+
+<h3>Generated SQL</h3>
+
+<h4>MySQL</h4>
+<pre><code id="mysql_create_table_sql"><%= show_sql @statement.to_mysql %></code></pre>
+
+<h4>PostgreSQL</h4>
+<pre><code id="postgresql_create_table_sql"><%= show_sql @statement.to_postgresql %></code></pre>
+
+<h4>Sqlite3</h4>
+<pre><code id="sqlite3_create_table_sql"><%= show_sql @statement.to_sqlite3 %></code></pre>
+
+
+<% if false %>
+<%= link_to 'Edit', edit_statement_path(@statement) %> |
+<%= link_to 'Back', statements_path %>
+<% end %>
+<%= link_to '&larr; Parse another'.html_safe, new_statement_path %>

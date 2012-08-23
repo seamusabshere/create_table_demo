@@ -1,0 +1,9 @@
+<h2>Parse</h2>
+
+<p><%= link_to "Try a sample &rarr;".html_safe, statements_path(:statement => { :original => %{CREATE TABLE foo (id INTEGER PRIMARY KEY AUTO_INCREMENT)} }), :method => :post %></p>
+
+<%= render 'form' %>
+
+<% if false %>
+<%= link_to 'Back', statements_path %>
+<% end %>
