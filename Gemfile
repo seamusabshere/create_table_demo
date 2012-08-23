@@ -5,6 +5,7 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'thin'
 gem 'pg'
 gem 'create_table', :git => 'https://github.com/seamusabshere/create_table.git'
 gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
