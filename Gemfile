@@ -6,6 +6,10 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'create_table', :git => 'https://github.com/seamusabshere/create_table.git'
+gem "active_model_serializers", :git => "git://github.com/josevalim/active_model_serializers.git"
+gem 'spox-ultraviolet', :require => 'uv'
+gem 'multi_json'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -18,9 +22,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-gem 'create_table', :git => 'https://github.com/seamusabshere/create_table.git'
-gem 'spox-ultraviolet', :require => 'uv'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
