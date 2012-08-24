@@ -1,23 +1,42 @@
-<h1>Listing statements</h1>
+<% @title = 'Listing parsed statements' %>
+
+<p><%= link_to 'Parse another &rarr;'.html_safe, new_statement_path %></p>
 
 <table>
   <tr>
-    <th>Original</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Statement</th>
+    <th>Errata</th>
   </tr>
+  <% @statements.each do |statement| %>
+  <tr id="statement_<%= statement.id %>">
+    <td>
+      <%= link_to statement.original.truncate(50).inspect, statement_url(statement) %>
+    </td>
+    <td>
+      <%= link_to "Statement #{statement.id}", statement_url(statement, :anchor => 'disqus_thread') %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 
-<% @statements.each do |statement| %>
-  <tr>
-    <td><%= statement.original %></td>
+<% if false %>
     <td><%= link_to 'Show', statement %></td>
     <td><%= link_to 'Edit', edit_statement_path(statement) %></td>
     <td><%= link_to 'Destroy', statement, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Statement', new_statement_path %>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'create-table'; // required: replace example with your forum shortname
+  <% if Rails.env.development? %>
+  var disqus_developer = 1; // developer mode is on
+  <% end %>
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  }());
+</script>

@@ -2,7 +2,13 @@
 
 <h2><%= @title %></h2>
 
-<p><%= link_to "Try a sample &rarr;".html_safe, statements_path(:statement => { :original => %{CREATE TABLE foo (id INTEGER PRIMARY KEY AUTO_INCREMENT)} }), :method => :post %></p>
+<p><%= link_to '&larr; List all'.html_safe, statements_path %></p>
+
+<% if Statement.count.zero? %>
+  <p><%= link_to "Try one &rarr;".html_safe, statements_path(:statement => { :original => %{CREATE TABLE foo (id INTEGER PRIMARY KEY AUTO_INCREMENT)} }), :method => :post %></p>
+<% else %>
+  <p><%= link_to "See a sample &rarr;".html_safe, statement_path(Statement.first) %>
+<% end %>
 
 <%= render 'form' %>
 

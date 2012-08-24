@@ -1,14 +1,14 @@
 class StatementsController < ApplicationController
-  # # GET /statements
-  # # GET /statements.json
-  # def index
-  #   @statements = Statement.all
+  # GET /statements
+  # GET /statements.json
+  def index
+    @statements = Statement.all
 
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render :json => @statements }
-  #   end
-  # end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @statements }
+    end
+  end
 
   # GET /statements/1
   # GET /statements/1.json

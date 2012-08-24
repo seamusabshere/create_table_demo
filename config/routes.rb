@@ -1,5 +1,5 @@
 CreateTableDemo::Application.routes.draw do
-  resources :statements, :only => [:new, :create, :show]
+  resources :statements, :only => [:new, :create, :show, :index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

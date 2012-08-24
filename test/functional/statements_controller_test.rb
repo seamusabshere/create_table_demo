@@ -5,11 +5,13 @@ class StatementsControllerTest < ActionController::TestCase
     @statement = statements(:one)
   end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:statements)
-  # end
+  test "should get index" do
+    get :index
+    assert_response :success
+    assigns(:statements).each do |statement|
+      assert_select "tr#statement_#{statement.id}", /#{statement.original.truncate(10)}/
+    end
+  end
 
   test "should get new" do
     get :new
