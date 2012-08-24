@@ -56,6 +56,19 @@ class StatementsControllerTest < ActionController::TestCase
     assert_match /AUTO_INCREMENT/, s['mysql']
     assert_match /SERIAL/, s['postgresql']
     assert_match /AUTOINCREMENT/, s['sqlite3']
+    assigns(:statement).create_table.columns.each do |c|
+      unless actual = s['columns'].detect { |cc| cc['name'] == c.name }
+        flunk "couldn't find column named #{c.name}"
+      end
+      assert_equal c.data_type.to_s, actual['data_type'].to_s
+      assert_equal c.allow_null.to_s, actual['allow_null'].to_s
+      assert_equal c.default.to_s, actual['default'].to_s
+      assert_equal c.primary_key.to_s, actual['primary_key'].to_s
+      assert_equal c.unique.to_s, actual['unique'].to_s
+      assert_equal c.autoincrement.to_s, actual['autoincrement'].to_s
+      assert_equal c.charset.to_s, actual['charset'].to_s
+      assert_equal c.collate.to_s, actual['collate'].to_s
+    end
   end
 
   test "should show statement as MySQL-compatible SQL" do

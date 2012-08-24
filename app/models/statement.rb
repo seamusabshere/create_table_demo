@@ -17,5 +17,7 @@ class Statement < ActiveRecord::Base
     create_table.to_sqlite3.join(";\n")
   end
 
-  delegate :columns, :to => :create_table
+  def columns
+    create_table.columns
+  end
 end
