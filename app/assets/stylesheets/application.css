@@ -12,4 +12,6 @@
  *= require_tree .
  */
 
-h1 { font-size: small;}
+.obvious { display: none; }
+h1 { font-size: small; }
+h3 { font-style: italic; }

@@ -1,24 +1,62 @@
+<% @title = "Parsing results for #{@statement.original.truncate(30).inspect}" %>
 <p id="notice"><%= notice %></p>
-
-<h2>Parse results</h2>
-
-<h4>Original</h4>
-<pre><code id="original"><%= show_sql @statement.original %></code></pre>
-
-<h3>Generated SQL</h3>
-
-<h4>MySQL</h4>
-<pre><code id="mysql_create_table_sql"><%= show_sql @statement.to_mysql %></code></pre>
-
-<h4>PostgreSQL</h4>
-<pre><code id="postgresql_create_table_sql"><%= show_sql @statement.to_postgresql %></code></pre>
-
-<h4>Sqlite3</h4>
-<pre><code id="sqlite3_create_table_sql"><%= show_sql @statement.to_sqlite3 %></code></pre>
-
 
 <% if false %>
 <%= link_to 'Edit', edit_statement_path(@statement) %> |
 <%= link_to 'Back', statements_path %>
 <% end %>
 <%= link_to '&larr; Parse another'.html_safe, new_statement_path %>
+
+<h2><%= @title %></h2>
+
+<ol>
+  <li><a href="#input">Input</a></li>
+  <li><a href="#table_structure">Table structure</a></li>
+  <li><a href="#cross_platform_sql">Cross-platform SQL</a></li>
+</ol>
+
+<h3 id="input">Input</h3>
+
+<h4 class="obvious">Original</h4>
+<pre><code id="original"><%= show_sql @statement.original %></code></pre>
+
+<h3 id="table_structure">Table structure</h3>
+<p>Number of columns: <%= @statement.columns.length %></p>
+
+<table>
+  <tr>
+    <th>name</th>
+    <th>data_type</th>
+    <th>allow_null</th>
+    <th>default</th>
+    <th>primary_key</th>
+    <th>unique</th>
+    <th>autoincrement</th>
+    <th>charset</th>
+    <th>collate</th>
+  </tr>
+<% @statement.columns.each do |c| %>
+  <tr id="column_<%=c.name%>">
+    <td class="name"><%= c.name %></td>
+    <td class="data_type"><%= c.data_type %></td>
+    <td class="allow_null"><%= c.allow_null %></td>
+    <td class="default"><%= c.default %></td>
+    <td class="primary_key"><%= c.primary_key %></td>
+    <td class="unique"><%= c.unique %></td>
+    <td class="autoincrement"><%= c.autoincrement %></td>
+    <td class="charset"><%= c.charset %></td>
+    <td class="collate"><%= c.collate %></td>
+  </tr>
+<% end %>
+</table>
+
+<h3 id="cross_platform_sql">Cross-platform SQL</h3>
+
+<h4><%= link_to 'MySQL', statement_url(@statement, :format => :mysql_sql) %></h4>
+<pre><code id="mysql_create_table_sql"><%= show_sql @statement.mysql %></code></pre>
+
+<h4><%= link_to 'PostgreSQL', statement_url(@statement, :format => :postgresql_sql) %></h4>
+<pre><code id="postgresql_create_table_sql"><%= show_sql @statement.postgresql %></code></pre>
+
+<h4><%= link_to 'Sqlite3', statement_url(@statement, :format => :sqlite3_sql) %></h4>
+<pre><code id="sqlite3_create_table_sql"><%= show_sql @statement.sqlite3 %></code></pre>

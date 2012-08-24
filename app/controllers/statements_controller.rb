@@ -18,6 +18,7 @@ class StatementsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @statement }
+      format.mysql_sql { render :text => @statement.mysql }
     end
   end
 
@@ -46,6 +47,7 @@ class StatementsController < ApplicationController
       if @statement.save
         format.html { redirect_to @statement, :notice => 'Statement was successfully parsed.' }
         format.json { render :json => @statement, :status => :created, :location => @statement }
+        format.mysql_sql { render :text => @statement.mysql, :status => :created, :location => @statement }
       else
         format.html { render :action => "new" }
         format.json { render :json => @statement.errors, :status => :unprocessable_entity }

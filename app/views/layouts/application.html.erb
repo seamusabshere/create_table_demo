@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
-  <title>CreateTableDemo</title>
+  <title>CreateTable demo<%= ": #{@title}" if @title %></title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Language" content="en" />
   <%= stylesheet_link_tag "application", :media => "all" %>
@@ -11,9 +11,13 @@
 </head>
 <body>
 
-<h1>CreateTable demo</h1>
+<h1><%= link_to 'CreateTable', 'https://github.com/seamusabshere/create_table' %> demo</h1>
 
 <%= yield %>
+
+<p><script type="text/javascript" src="http://impact.brighterplanet.com/badge.js"></script></p>
+
+<p>&copy; <%= Time.now.year %> <%= link_to 'Brighter Planet, Inc.', 'http://brighterplanet.com' %></p>
 
 </body>
 </html>
