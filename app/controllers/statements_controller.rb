@@ -41,7 +41,8 @@ class StatementsController < ApplicationController
   # POST /statements
   # POST /statements.json
   def create
-    @statement = Statement.new(params[:statement])
+    original = params.has_key?(:statement) ? params[:statement][:original] : request.body.read
+    @statement = Statement.new(:original => original)
 
     respond_to do |format|
       if @statement.save
