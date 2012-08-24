@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/seamusabshere/create_table.git
-  revision: a3b3e18b1b6ec33561f7716a9d1f34abccbbc0fb
+  revision: eb21ab0d13b7624d5b7dae8e78acd745ebe03d89
   specs:
     create_table (0.0.1)
 
