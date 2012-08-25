@@ -20,4 +20,6 @@ class Statement < ActiveRecord::Base
   def columns
     create_table.columns
   end
+
+  validates_presence_of :original
 end

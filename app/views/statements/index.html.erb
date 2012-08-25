@@ -10,7 +10,7 @@
   <% @statements.each do |statement| %>
   <tr id="statement_<%= statement.id %>">
     <td>
-      <%= link_to statement.original.truncate(50).inspect, statement_url(statement) %>
+      <%= link_to statement.original.to_s.truncate(50).inspect, statement_url(statement) %>
     </td>
     <td>
       <%= link_to "Statement #{statement.id}", statement_url(statement, :anchor => 'disqus_thread') %>
